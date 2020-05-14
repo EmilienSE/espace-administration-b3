@@ -1,5 +1,5 @@
 <?php
-include('php/index.php');
+include('php/connect.php');
 $sqlSelect = $pdo->query("SELECT `idCategory`, `name` FROM `category`");
 ?>
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ $sqlSelect = $pdo->query("SELECT `idCategory`, `name` FROM `category`");
     </nav>
 
     <div class="Content">
-        <form action="php/category.php" method="post">
+        <form id="form-content" method="post" data-action="php/category.php">
             <label for="name">Nom :</label>
             <input type="text" id="name" name="name"><br><br>
             <label for="slug">Slug :</label>
@@ -35,8 +35,11 @@ $sqlSelect = $pdo->query("SELECT `idCategory`, `name` FROM `category`");
 	        </select>
             <label for="enable">Activation :</label>
             <input type="checkbox" id="enable" name="enable" value="1"><br><br>
-            <input type="submit" name="createCategory" value="Ajouter">
+            <input type="hidden" name="createCategory">
+            <input type="submit" value="Ajouter">
+            <form>
         </form>
     </div>
+    <script type="text/javascript" src="resources/js/traitement.js"></script>
 </body>
 </html>

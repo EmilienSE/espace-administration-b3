@@ -1,6 +1,7 @@
 <?php
-include('php/index.php');
-$sqlSelect = $pdo->query("SELECT `idCategory`, `name` FROM `category`");
+include('php/connect.php');
+$sqlSelect = $pdo->query("SELECT * FROM `category`");
+$sqlSelect2 = $pdo->query("SELECT * FROM `category` WHERE `idCategory` = ".$_GET['idCategory']."");
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,13 +19,18 @@ $sqlSelect = $pdo->query("SELECT `idCategory`, `name` FROM `category`");
     </nav>
 
     <div class="Content">
-        <form action='php/category.php?idCategory=<?php echo $_GET['idCategory']?>' method="post">
+        <form id="form-content" method="post" data-action="php/category.php?idCategory=<?php echo $_GET['idCategory']?>">
             <label for="name">Nom :</label>
-            <input type="text" id="name" name="name" value="Chaussette"><br><br>
-            <label for="slug">Slug :</label>
-            <input type="text" id="slug" name="slug" value="www.boutique.com/chaussettes"><br><br>
-            <label for="description">Description :</label>
-            <input type="text" id="description" name="description" value="Lorem Ipsum"><br><br>
+            <?php
+                while ($donnees = $sqlSelect2->fetch()) {
+                    echo '<input type="text" id="name" name="name" value="'.$donnees['name'].'"><br><br>';
+                    echo '<label for="slug">Slug :</label>';
+                    echo '<input type="text" id="slug" name="slug" value="'.$donnees['slug'].'"><br><br>';
+                    echo '<label for="description">Description :</label>';
+                    echo '<input type="text" id="description" name="description" value="'.$donnees['description'].'"><br><br>';
+                }
+                $sqlSelect2->closeCursor();
+                ?>
 	        <select id="categoryparent" name="categoryparent">
                 <?php
                 while ($donnees = $sqlSelect->fetch()) {
@@ -35,8 +41,10 @@ $sqlSelect = $pdo->query("SELECT `idCategory`, `name` FROM `category`");
 	        </select>
             <label for="enable">Activation :</label>
             <input type="checkbox" id="enable" name="enable" value="1"><br><br>
-            <input type="submit" name="editCategory" value="Modifier">
+            <input type="hidden" name="editCategory">
+            <input type="submit" value="Modifier">
         </form>
     </div>
+    <script type="text/javascript" src="resources/js/traitement.js"></script>
 </body>
 </html>

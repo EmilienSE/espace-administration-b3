@@ -1,5 +1,5 @@
 <?php
-include('index.php');
+include('connect.php');
 
 if (isset($_POST['createProduct']) || isset($_POST['editProduct'])) {
     // récupérer les valeurs
@@ -11,12 +11,18 @@ if (isset($_POST['createProduct']) || isset($_POST['editProduct'])) {
     $height = $_POST['height'];
     $width = $_POST['width'];
     $quantity = $_POST['quantity'];
-    $enabled = $_POST['enable'];
+    if (empty($_POST['enable'])) {
+        $enabled = 0;
+    } else {
+        $enabled = $_POST['enable'];
+    }
+
+
 }
 
 
 if (isset($_POST['createProduct'])) {
-    // Requête mysql pour insérer des données
+    // Requête mysql pour création produit
     $sql = "INSERT INTO `product`(`name`, `slug`, `description`, `price`, `weight`, `height`, `width`, `quantity`, `enabled`) VALUES (:nom, :slug, :description, :price, :weight, :height, :width, :quantity, :enabled)";
     $res = $pdo->prepare($sql);
     $exec = $res->execute(
@@ -38,6 +44,26 @@ if (isset($_POST['createProduct'])) {
     } else {
         echo "Échec de l'opération d'insertion";
     }
+
+    $idProduct = $pdo->lastInsertId();
+
+    if (!empty($_POST['categoryparent'])) {
+        // Requête mysql pour link produit
+        $sqlLinkProduct = "INSERT INTO `link_product_category`(`idCategory`, `idProduct`) VALUES (:idCategory, :idProduct)";
+        $res = $pdo->prepare($sqlLinkProduct);
+        $exec2 = $res->execute(
+            array(
+                ':idCategory' => $_POST['categoryparent'],
+                ':idProduct' => $idProduct
+            )
+        );
+        // vérifier si la requête d'insertion a réussi
+        if ($exec2) {
+            echo 'Produit lié à la catégorie';
+        } else {
+            echo "Échec de l'opération d'insertion";
+        }
+    }
 } else if (isset($_POST['editProduct'])) {
     $idProduct = $_GET['idProduct'];
     // Requête mysql pour update des données
@@ -49,6 +75,23 @@ if (isset($_POST['createProduct'])) {
         echo 'Données modifiées';
     } else {
         echo "Échec de l'opération d'update";
+    }
+    if (!empty($_POST['categoryparent']) && $_POST['categoryparent'] !== 'default') {
+        // Requête msql pour link produit
+        $sqlLinkProduct = "INSERT INTO `link_product_category`(`idCategory`, `idProduct`) VALUES (:idCategory, :idProduct)";
+        $res = $pdo->prepare($sqlLinkProduct);
+        $exec2 = $res->execute(
+            array(
+                ':idCategory' => $_POST['categoryparent'],
+                ':idProduct' => $idProduct
+            )
+        );
+        // vérifier si la requête d'insertion a réussi
+        if ($exec2) {
+            echo 'Produit lié à la catégories';
+        } else {
+            echo "Échec de l'opération d'insertion";
+        }
     }
 } else if (isset($_POST['supprProduct'])) {
     $idProduct = $_GET['idProduct'];
@@ -62,5 +105,15 @@ if (isset($_POST['createProduct'])) {
     } else {
         echo "Échec de l'opération delete";
     }
+} else if (isset($_POST['supprLink'])) {
+    // Requête msql pour link produit
+    $sqlSupprLink = 'DELETE FROM `link_product_category` WHERE `idLinkProductCategory` = '.$_POST['supprLink'].'';
+    $res = $pdo->prepare($sqlSupprLink);
+    $exec3 = $res->execute();
+    // vérifier si la requête d'insertion a réussi
+    if ($exec3) {
+        echo 'Supprimer';
+    } else {
+        echo "Échec de l'opération d'insertion";
+    }
 }
-

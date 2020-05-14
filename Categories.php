@@ -1,5 +1,5 @@
 <?php
-include('php/index.php');
+include('php/connect.php');
 $sqlSelect = $pdo->query("SELECT * FROM `category`");
 ?>
 <!DOCTYPE html>
@@ -33,6 +33,9 @@ $sqlSelect = $pdo->query("SELECT * FROM `category`");
 		</thead>
 		<tbody>
         <?php
+
+        
+        
         while ($donnees = $sqlSelect->fetch()) {
         	echo ' 
 		<tr>
@@ -43,7 +46,7 @@ $sqlSelect = $pdo->query("SELECT * FROM `category`");
             <td><span>'.$donnees['description'].'</span></td>
             <td><span>'.$donnees['enabled'].'</span></td>
             <td><a href="ModifierCategorie.php?idCategory='.$donnees['idCategory'].'"><button>Modifier</button></a></td>
-            <td><form method="post" action="php/category.php.php?idCategory='.$donnees['idCategory'].'"><button type="submit" name="supprCategory">Supprimer</button></form></td>
+            <td><form id="form-content" method="post" data-action="php/category.php?idCategory='.$donnees['idCategory'].'"><button type="submit" name="supprCategory">Supprimer</button></form></td>
             
 		</tr>
 		';

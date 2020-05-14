@@ -1,11 +1,15 @@
 <?php
-include('index.php');
+include('connect.php');
 
 // récupérer les valeurs
 if (isset($_POST['createCategory']) || isset($_POST['editCategory'])) {
     $slug = $_POST['slug'];
     $name = $_POST['name'];
-    $enabled = $_POST['enable'];
+    if (empty($_POST['enable'])) {
+        $enabled = 0;
+    } else {
+        $enabled = $_POST['enable'];
+    }
     $description = $_POST['description'];
     $categoryParent = $_POST['categoryparent'];
 }

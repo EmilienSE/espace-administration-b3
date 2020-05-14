@@ -1,6 +1,7 @@
 <?php
-include('php/index.php');
-$sqlSelect = $pdo->query("SELECT `idProduct` FROM `product`");
+include('php/connect.php');
+$sqlSelect = $pdo->query("SELECT `idCategory`, `name` FROM `category`");
+$sqlSelectLinkCategory = $pdo->query("SELECT l.*, c.* FROM `link_product_category` AS l, `category` AS  c WHERE l.idProduct = ".$_GET['idProduct']." AND c.idCategory = l.idCategory");
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +19,9 @@ $sqlSelect = $pdo->query("SELECT `idProduct` FROM `product`");
 </nav>
 
 <div class="Content">
-    <form action="php/product.php?idProduct=<?php echo $_GET['idProduct']?>" method="post">
+    
+    
+    <form id="form-content" method="post" data-action="php/product.php?idProduct=<?php echo $_GET['idProduct']?>">
         <label for="name">Nom :</label>
         <input type="text" id="name" name="name" value="Chaussettes rouges domyos"><br><br>
         <label for="slug">Slug :</label>
@@ -35,6 +38,24 @@ $sqlSelect = $pdo->query("SELECT `idProduct` FROM `product`");
         <input type="number" id="width" name="width" value="0.20" step="0.1"><br><br>
         <label for="quantity">Quantité :</label>
         <input type="number" id="quantity" name="quantity" value="120" step="1"><br><br>
+            <?php
+            while ($donnees2 = $sqlSelectLinkCategory->fetch()) {
+                echo '<div id="idLink"> Catégorie:  '.$donnees2['name'].'</div>
+                    <a href="php/product.php?idSupprLink='.$donnees2['idLinkProductCategory'].'" ><button name="supprLink" value="'.$donnees2['idLinkProductCategory'].'">Supprimer</button></a>
+';
+            }
+            $sqlSelectLinkCategory->closeCursor();
+            ?>
+        <select id="categoryparent" name="categoryparent">
+            <option name="option" value="default"></option>
+            <?php
+            while ($donnees = $sqlSelect->fetch()) {
+                echo '
+                <option name="option" value="'.$donnees['idCategory'].'">'.$donnees['name'].'</option>';
+            }
+            $sqlSelect->closeCursor();
+            ?>
+        </select>
         <label for="enable">Activation :</label>
         <input type="checkbox" id="enable" name="enable" value="1"><br><br>
         <input type="submit" name="editProduct" value="Modifier">

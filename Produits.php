@@ -1,5 +1,5 @@
 <?php
-include('php/index.php');
+include('php/connect.php');
 $sqlSelect = $pdo->query("SELECT * FROM `product`");
 ?>
 <!DOCTYPE html>
