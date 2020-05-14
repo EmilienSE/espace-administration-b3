@@ -1,0 +1,222 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+/*Général*/
+body {
+  margin: 0px;
+  height: 100vh;
+  overflow: hidden;
+}
+nav {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding: 24px;
+  text-align: center;
+  font-family: Raleway;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  background: #3fa46a;
+}
+h2{
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 15px;
+    font-family: Raleway;
+  }
+
+/*Navigation*/
+nav a {
+  transition: 0.3s ease;
+  background: #3fa46a;
+  color: #ffffff;
+  font-size: 20px;
+  text-decoration: none;
+  border-top: 4px solid #3fa46a;
+  border-bottom: 4px solid #3fa46a;
+  padding: 20px 0;
+  margin: 0 20px;
+}
+nav a:hover {
+  border-top: 4px solid #ffffff;
+  border-bottom: 4px solid #ffffff;
+  padding: 6px 0; 
+}
+
+  /* Container Content*/
+  .Content {
+    width: 100%;
+    height: 50%;
+    margin-top: 20px;
+    box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: auto;
+  }
+
+  /*Tableau*/
+  table{
+    width:100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+
+  }
+  
+ thead {
+    background-color: rgba(44, 44, 44, 1);
+    border-bottom: solid 1px rgba(255,255,255,0.1);
+    width: 100%;
+ }
+
+  tbody {
+    height:300px;
+    margin-top: 0px;
+    background-color: rgba(44, 44, 44, 1);
+    width: 100%;
+  }
+
+  th{
+    padding: 20px 15px;
+    text-align: center;
+    font-family: Raleway;
+    font-weight: bold;
+    font-size: 16px;
+    color: yellow;
+    text-transform: uppercase;
+  }
+
+  td{
+    padding: 15px;
+    text-align: center;
+    vertical-align:middle;
+    font-weight: 300;
+    font-size: 14px;
+    color: #fff;
+    word-break: break-all;
+  }
+
+  /*Scrollbar du tableau*/
+  ::-webkit-scrollbar {
+      width: 6px;
+  } 
+  ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px #3fa46a; 
+  } 
+  ::-webkit-scrollbar-thumb {
+      -webkit-box-shadow: inset 0 0 6px #3fa46a; 
+  }
+ /*Bouton*/
+  button, input[type=submit] {
+    height: auto;
+    padding: 10px 35px;
+    font-size: 13px;
+    border-radius: 30px;
+    color: #000;
+    border-color: transparent;
+    background-color: rgb(170, 170, 170);
+    word-break: normal;
+      
+  }
+  button:hover,input[type=submit]:hover {
+    font-weight: 400;
+    color: rgba(255,255,255, .85);
+    background:#3fa46a;
+    text-decoration: none;
+    outline: none;
+    border-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .Gestion {
+      border: 1px solid black;
+  }
+
+  /*Formulaires*/
+
+  .Content-Form {
+      display: flex;
+      justify-content: center;
+      overflow: auto;
+  }
+
+  form {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+  }
+
+  label {
+      font-family: Raleway;
+      padding: 10px;
+      margin: 10px;
+  }
+
+  input[type=text], input[type=number] {
+      border-radius: 30px;
+      border:1px solid #000;
+      padding: 15px;
+    }
+    
+    input:focus {
+        border:3px solid #3fa46a;    
+  } 
+
+  input[type='checkbox'] {
+    border: 2px solid Crimson;
+    border-radius: 12px;
+    color: #282828;
+    background: #fff;
+    position: relative;
+    width: 90px;
+    height: 42px;
+    -webkit-appearance: initial;
+    -moz-appearance: initial;
+    -ms-appearance: initial;
+    appearance: initial;
+    border-radius: 21px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    outline: none;
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+
+  input[type='checkbox']:before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    left: calc(0% + 8px);
+    transform: translate3d(0, -50%, 0);
+    border-radius: 50%;
+    background-color: Crimson;
+  }
+    
+  input[type='checkbox']:after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(0% + 24px + 16px);
+    transform: translate3d(0, -50%, 0);
+    font-size: 20px;
+  }
+  
+  input[type='checkbox']:checked{
+    border-color: #3fa46a;
+  } 
+
+  input[type='checkbox']:checked:before {
+    left: calc(100% - 24px - 8px);
+    transform: translate3d(0, -50%, 0);
+    border-radius: 50%;
+    background-color: #3fa46a;
+  }
+  
+  input[type='checkbox']:checked:after {
+    content: "";
+    left: calc(0% + 16px);
+  }
+
+  .activation {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+  }
