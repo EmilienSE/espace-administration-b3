@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 13 mai 2020 à 13:46
+-- Généré le :  jeu. 14 mai 2020 à 10:15
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -62,29 +62,14 @@ CREATE TABLE IF NOT EXISTS `category` (
   `enabled` tinyint(4) NOT NULL,
   PRIMARY KEY (`idCategory`),
   KEY `idParentCategory_idx` (`idParentCategory`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `category`
 --
 
 INSERT INTO `category` (`idCategory`, `name`, `slug`, `description`, `idParentCategory`, `enabled`) VALUES
-(1, 'Chaussette', 'www.boutique.com/chaussettes', 'Lorem Ipsum', 1, 0),
-(2, 'nom', 'slug', 'description', 1, 0),
-(3, 'Chaussette', 'www.boutique.com/chaussettes', 'Lorem Ipsum bloublu', 1, 0),
-(4, 'Lol', 'www.boutique.com/chaussettes', 'Lorem Ipsum', 1, 1),
-(5, 'rorolefilou', 'slug2', 'dedede', 4, 0),
-(9, 'Romain', 'slug', 'test', 1, 0),
-(10, 'Chaussette', 'www.boutique.com/chaussettes', 'Lorem Ipsum', 1, 0),
-(11, 'Romain', 'www.boutique.com/chaussettes/Chaussettes-rouges-domyos', 'Malboro', 10, 1),
-(12, 'Accueil', 'https://accueil', 'Voici la catÃ©gorie par dÃ©faut', 12, 1),
-(13, 'Accueil', 'https://accueil', 'Voici la catÃ©gorie par dÃ©faut', 12, 1),
-(14, 'Accueil', 'https://accueil', 'Voici la catÃ©gorie par dÃ©faut', 12, 1),
-(15, 'Accueil', 'https://accueil', 'Voici la catÃ©gorie par dÃ©faut', 12, 1),
-(16, 'Accueil', 'https://accueil', 'Voici la catÃ©gorie par dÃ©faut', 12, 1),
-(17, 'Accueil', 'https://accueil', 'Voici la catÃ©gorie par dÃ©faut', 12, 1),
-(18, 'Accueil', 'https://accueil', 'Voici la catÃ©gorie par dÃ©faut', 12, 1),
-(19, 'Accueil', 'https://accueil', 'Voici la catÃ©gorie par dÃ©faut', 12, 1);
+(28, 'Accueil', 'http://accueil', 'Voic catÃ©gorie parente', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -100,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `link_product_category` (
   PRIMARY KEY (`idLinkProductCategory`,`idCategory`),
   KEY `idCategory_idx` (`idCategory`),
   KEY `idProduct_idx` (`idProduct`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -122,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `enabled` tinyint(4) NOT NULL,
   PRIMARY KEY (`idProduct`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Contraintes pour les tables déchargées
@@ -132,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 -- Contraintes pour la table `category`
 --
 ALTER TABLE `category`
-  ADD CONSTRAINT `idParentCategory` FOREIGN KEY (`idParentCategory`) REFERENCES `category` (`idCategory`);
+  ADD CONSTRAINT `idParentCategory` FOREIGN KEY (`idParentCategory`) REFERENCES `category` (`idCategory`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `link_product_category`
