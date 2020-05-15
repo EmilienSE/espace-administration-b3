@@ -21,7 +21,8 @@ $sqlSelect2 = $pdo->query("SELECT * FROM `product` WHERE `idProduct` = ".$_GET['
                 <?php
                 while ($donnees3 = $sqlSelect2->fetch()) {
                     echo '
-                
+				<div class="column">
+				<div class="column-inside">
                 <label for="name">Nom :</label>
 	            <input type="text" id="name" name="name" value="'.$donnees3['name'].'" required><br><br>
 	            <label for="slug">Slug :</label>
@@ -31,7 +32,9 @@ $sqlSelect2 = $pdo->query("SELECT * FROM `product` WHERE `idProduct` = ".$_GET['
 	            <label for="price">Prix :</label>
 	            <input type="number" id="price" name="price" value="'.$donnees3['price'].'" step="0.01" required><br><br>
 	            <label for="weight">Poids :</label>
-	            <input type="number" id="weight" name="weight" value="'.$donnees3['weight'].'" step="0.1" required><br><br>
+				<input type="number" id="weight" name="weight" value="'.$donnees3['weight'].'" step="0.1" required><br><br>
+				</div>
+				<div class="column-inside">
 	            <label for="height">Hauteur :</label>
 	            <input type="number" id="height" name="height" value="'.$donnees3['height'].'" step="0.1" required><br><br>
 	            <label for="width">Largeur :</label>
@@ -53,8 +56,7 @@ $sqlSelect2 = $pdo->query("SELECT * FROM `product` WHERE `idProduct` = ".$_GET['
                     ?>
 				</select> <label for="enable">Activation :</label>
 				<input type="checkbox" id="enable" name="enable" value="1">
-				<br>
-				<br>
+				<?php echo '</div></div>'?>
 				<input type="submit" name="editProduct" value="Modifier">
 			</form>
 		</div>
