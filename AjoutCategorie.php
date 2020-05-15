@@ -2,29 +2,22 @@
 include('php/connect.php');
 $sqlSelect = $pdo->query("SELECT `idCategory`, `name` FROM `category`");
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Espace Administration</title>
-    <link href="resources/css/index.css" type="text/css" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <h2>Espace Administration</h2>
-    </header>
+<?php require "header.php"; ?>
     <nav>
         <a href="Categories.php">Catégories</a> |
         <a href="Produits.php">Produits</a>
     </nav>
-
+<div class="container-form">
     <div class="Content">
+        <h3>Ajouter une Catégorie</h3>
         <form id="form-content" method="post" data-action="php/category.php">
             <label for="name">Nom :</label>
-            <input type="text" id="name" name="name"><br><br>
+            <input type="text" id="name" name="name">
             <label for="slug">Slug :</label>
-            <input type="text" id="slug" name="slug"><br><br>
+            <input type="text" id="slug" name="slug">
             <label for="description">Description :</label>
-            <input type="text" id="description" name="description"><br><br>
+            <input type="text" id="description" name="description">
+            <label for="categoryparent">Catégorie parente</label>
 	        <select id="categoryparent" name="categoryparent">
                 <?php
                 while ($donnees = $sqlSelect->fetch()) {
@@ -32,14 +25,15 @@ $sqlSelect = $pdo->query("SELECT `idCategory`, `name` FROM `category`");
                 }
                 $sqlSelect->closeCursor();
                 ?>
-	        </select>
-            <label for="enable">Activation :</label>
-            <input type="checkbox" id="enable" name="enable" value="1"><br><br>
+            </select>
+            <div class="activation">
+                <label for="enable">Activation :</label>
+                <input type="checkbox" id="enable" name="enable" value="1">
+            </div>
             <input type="hidden" name="createCategory">
             <input type="submit" value="Ajouter">
             <form>
         </form>
     </div>
-    <script type="text/javascript" src="resources/js/traitement.js"></script>
-</body>
-</html>
+</div>
+<?php require "footer.php"; ?>

@@ -2,20 +2,11 @@
 include('php/connect.php');
 $sqlSelect = $pdo->query("SELECT * FROM `category`");
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Espace Administration</title>
-	<link href="resources/css/index.css" type="text/css" rel="stylesheet">
-</head>
-<body>
-<header>
-	<h2>Espace Administration</h2>
-</header>
+<?php require "header.php"; ?>
 <nav>
 	<a href="Categories.php">Catégories</a> | <a href="Produits.php">Produits</a>
 </nav>
-<a href="AjoutCategorie.php">
+<a href="AjoutCategorie.php"  class="Ajout">
 	<button class="Gestion">Ajouter une catégorie</button>
 </a>
 <div class="Content">
@@ -34,8 +25,6 @@ $sqlSelect = $pdo->query("SELECT * FROM `category`");
 		<tbody>
         <?php
 
-        
-        
         while ($donnees = $sqlSelect->fetch()) {
         	echo ' 
 		<tr>
@@ -46,7 +35,7 @@ $sqlSelect = $pdo->query("SELECT * FROM `category`");
             <td><span>'.$donnees['description'].'</span></td>
             <td><span>'.$donnees['enabled'].'</span></td>
             <td><a href="ModifierCategorie.php?idCategory='.$donnees['idCategory'].'"><button>Modifier</button></a></td>
-            <td><form id="form-content" method="post" data-action="php/category.php?idCategory='.$donnees['idCategory'].'"><button type="submit" name="supprCategory">Supprimer</button></form></td>
+			<td><form class=cell-button id="form-content" method="post" data-action="php/category.php?idCategory='.$donnees['idCategory'].'"><button type="submit" name="supprCategory" class="suppress" id="btn_supression">Supprimer</button></form></td>
             
 		</tr>
 		';
@@ -56,5 +45,4 @@ $sqlSelect = $pdo->query("SELECT * FROM `category`");
 		</tbody>
 	</table>
 </div>
-</body>
-</html>
+<?php require "footer.php"; ?>

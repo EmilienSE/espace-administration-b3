@@ -3,22 +3,14 @@ include('php/connect.php');
 $sqlSelect = $pdo->query("SELECT * FROM `category`");
 $sqlSelect2 = $pdo->query("SELECT * FROM `category` WHERE `idCategory` = ".$_GET['idCategory']."");
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Espace Administration</title>
-    <link href="resources/css/index.css" type="text/css" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <h2>Espace Administration</h2>
-    </header>
+<?php require "header.php"; ?>
     <nav>
         <a href="Categories.php">Catégories</a> |
         <a href="Produits.php">Produits</a>
     </nav>
-
+<div class="container-form">
     <div class="Content">
+        <h3>Modifier catégorie</h3>
         <form id="form-content" method="post" data-action="php/category.php?idCategory=<?php echo $_GET['idCategory']?>">
             <label for="name">Nom :</label>
             <?php
@@ -45,6 +37,5 @@ $sqlSelect2 = $pdo->query("SELECT * FROM `category` WHERE `idCategory` = ".$_GET
             <input type="submit" value="Modifier">
         </form>
     </div>
-    <script type="text/javascript" src="resources/js/traitement.js"></script>
-</body>
-</html>
+</div>
+<?php require "footer.php"; ?>
