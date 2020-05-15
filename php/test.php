@@ -2,4 +2,4 @@
 $options = [
     'cost' => 12,
 ];
-echo password_hash("admin", PASSWORD_BCRYPT, $options);
+echo password_hash("test", PASSWORD_BCRYPT, $options);

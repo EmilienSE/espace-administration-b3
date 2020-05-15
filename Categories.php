@@ -32,7 +32,7 @@ $sqlSelect = $pdo->query("SELECT * FROM `category`");
             <td><span>'.$donnees['description'].'</span></td>
             <td><span>'.$donnees['enabled'].'</span></td>
             <td><a href="ModifierCategorie.php?idCategory='.$donnees['idCategory'].'&id='.$_GET['id'].'"><button>Modifier</button></a></td>
-			<td><form class=cell-button method="post" action="php/category.php?idCategory='.$donnees['idCategory'].'&id='.$_GET['id'].'"><button type="submit" name="supprCategory" class="suppress" id="btn_supression">Supprimer</button></form></td>
+			<td><form class=cell-button method="post" onclick="return confirm(\'Êtes-vous sûr de vouloir supprimer ?\');" action="php/category.php?idCategory='.$donnees['idCategory'].'&id='.$_GET['id'].'"><button type="submit" name="supprCategory" class="suppress" id="btn_supression">Supprimer</button></form></td>
             
 		</tr>
 		';

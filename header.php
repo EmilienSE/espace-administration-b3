@@ -16,7 +16,7 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
 </head>
 <body id="body">
 <header>
-    <a href="connexion.php"><h2>Espace Administration</h2></a>
+    <a href="index.php"><h2>Espace Administration</h2></a>
 </header>
 <?php if (isset($_GET['id']) && $_GET['id'] > 0) {
 
@@ -26,4 +26,6 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
 	<a href="Categories.php?id=<?php echo $_GET['id']; ?>">Catégories</a> | <a href="Produits.php?id=<?php echo $_GET['id']; ?>">Produits</a>
 </nav>
 
-<?php } ?>
+<?php } else {
+	//echo "<script type='text/javascript'>document.location.replace('index.php');</script>";
+} ?>

@@ -41,7 +41,7 @@ $sqlSelect = $pdo->query("SELECT * FROM `product`");
 		            <td><span>'.$donnees['quantity'].'</span></td>
 		            <td><span>'.$donnees['enabled'].'</span></td>
 		            <td><a href="ModifierProduit.php?idProduct='.$donnees['idProduct'].'&id='.$_GET['id'].'"><button>Modifier</button></a></td>
-		            <td><form class="cell-button" method="post" action="php/product.php?idProduct='.$donnees['idProduct'].'&id='.$_GET['id'].'"><button type="submit" name="supprProduct" id="btn_supression">Supprimer</button></form></td>
+		            <td><form class="cell-button" method="post" onclick="return confirm(\'Êtes-vous sûr de vouloir supprimer ?\');" action="php/product.php?idProduct='.$donnees['idProduct'].'&id='.$_GET['id'].'"><button type="submit" name="supprProduct" id="btn_supression">Supprimer</button></form></td>
 		     
 				</tr>
 				';

@@ -1,7 +1,7 @@
     <?php require "header.php"; ?>
     <?php
     session_start();
-    include('php/connect.php');
+    include('/php/connect.php');
     if (isset($_POST['formconnexion'])) {
         $mailconnect = htmlspecialchars($_POST['mail']);
         $mdpconnect = $_POST['password'];
@@ -16,7 +16,8 @@
                     $_SESSION['idAdminAccount']= $userinfo['idAdminAccount'];
                     $_SESSION['mail']=$userinfo['mail'];
                     $_SESSION['name']=$userinfo['name'];
-                    header('location: Categories.php?id='.$_SESSION['idAdminAccount']);
+                    //header('location: http://milesclipmaker.fr/test/b3-dev/Categories.php?id='.$_SESSION['idAdminAccount']);
+		              echo "<script type='text/javascript'>document.location.replace('Categories.php?id=".$_SESSION['idAdminAccount']."');</script>";
                 } else {
                     $error='Mauvais identifiants';
                 }
@@ -31,7 +32,7 @@
     ?>
     <div class="container-form">
 	    <div class="Content">
-		    <form id="form-content-login" method="post" action="connexion.php">
+		    <form id="form-content-login" method="post" action="index.php">
 			    <label for="mail">Mail :</label>
 			    <input type="text" id="mail" name="mail"><br><br>
 			    <label for="password">Mot de passe :</label>

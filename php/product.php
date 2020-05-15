@@ -41,7 +41,8 @@ if (isset($_POST['createProduct'])) {
     // vérifier si la requête d'insertion a réussi
     if ($exec) {
         echo 'Données insérées';
-        header('location: ../Produits.php?id='.$_GET['id']);
+        //header('location: ../Produits.php?id='.$_GET['id']);
+        echo "<script type='text/javascript'>document.location.replace('../Produits.php?id=".$_GET['id']."');</script>";
     } else {
         echo "Échec de l'opération d'insertion";
     }
@@ -61,7 +62,8 @@ if (isset($_POST['createProduct'])) {
         // vérifier si la requête d'insertion a réussi
         if ($exec2) {
             echo 'Produit lié à la catégorie';
-            header('location: ../Produits.php?id='.$_GET['id']);
+            //header('location: ../Produits.php?id='.$_GET['id']);
+            echo "<script type='text/javascript'>document.location.replace('../Produits.php?id=".$_GET['id']."');</script>";
         } else {
             echo "Échec de l'opération d'insertion";
         }
@@ -76,7 +78,8 @@ if (isset($_POST['createProduct'])) {
     // vérifier si la requête d'insertion a réussi
     if ($exec) {
         echo 'Produit modifiée';
-        header('location: ../Produits.php?id='.$_GET['id']);
+        //header('location: ../Produits.php?id='.$_GET['id']);
+        echo "<script type='text/javascript'>document.location.replace('../Produits.php?id=".$_GET['id']."');</script>";
     } else {
         echo "Échec de l'opération d'update";
     }
@@ -93,7 +96,8 @@ if (isset($_POST['createProduct'])) {
         // vérifier si la requête d'insertion a réussi
         if ($exec2) {
             echo '-Produit lié à la catégorie';
-            header('location: ../Produits.php?id='.$_GET['id']);
+            //header('location: ../Produits.php?id='.$_GET['id']);
+            echo "<script type='text/javascript'>document.location.replace('../Produits.php?id=".$_GET['id']."');</script>";
         } else {
             echo "Échec de l'opération d'insertion";
         }
@@ -108,7 +112,8 @@ if (isset($_POST['createProduct'])) {
     // vérifier si la requête d'insertion a réussi
     if ($exec) {
         echo 'Produit supprimée';
-        header('location: ../Produits.php?id='.$_GET['id']);
+        //header('location: ../Produits.php?id='.$_GET['id']);
+        echo "<script type='text/javascript'>document.location.replace('../Produits.php?id=".$_GET['id']."');</script>";
     } else {
         echo "Échec de l'opération delete";
     }
@@ -120,7 +125,8 @@ if (isset($_POST['createProduct'])) {
     // vérifier si la requête d'insertion a réussi
     if ($exec3) {
         echo 'Lien à la catégorie supprimer';
-        header('location: ../Produits.php?id='.$_GET['id']);
+        //header('location: ../Produits.php?id='.$_GET['id']);
+        echo "<script type='text/javascript'>document.location.replace('../Produits.php?id=".$_GET['id']."');</script>";
     } else {
         echo "Échec de l'opération d'insertion";
     }

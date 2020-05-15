@@ -28,7 +28,8 @@ if (isset($_POST['createCategory'])) {
     // vérifier si la requête d'insertion a réussi
     if ($exec) {
         echo 'Catégorie créer';
-        header('location: ../Categories.php?id='.$_GET['id']);
+        //header('location: ../Categories.php?id='.$_GET['id']);
+        echo "<script type='text/javascript'>document.location.replace('../Categories.php?id=".$_GET['id']."');</script>";
     } else {
         echo "Échec de l'opération d'insertion";
     }
@@ -41,7 +42,8 @@ if (isset($_POST['createCategory'])) {
     // vérifier si la requête d'insertion a réussi
     if ($exec) {
         echo 'Catégorie modifiée';
-        header('location: ../Categories.php?id='.$_GET['id']);
+        //header('location: ../Categories.php?id='.$_GET['id']);
+        echo "<script type='text/javascript'>document.location.replace('../Categories.php?id=".$_GET['id']."');</script>";
     } else {
         echo "Échec de l'opération d'update";
     }
@@ -54,7 +56,8 @@ if (isset($_POST['createCategory'])) {
     // vérifier si la requête d'insertion a réussi
     if ($exec) {
         echo 'Catégorie supprimer';
-        header('location: ../Categories.php?id='.$_GET['id']);
+        //header('location: ../Categories.php?id='.$_GET['id']);
+        echo "<script type='text/javascript'>document.location.replace('../Categories.php?id=".$_GET['id']."');</script>";
     } else {
         echo "Échec de l'opération delete";
     }

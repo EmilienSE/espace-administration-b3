@@ -13,7 +13,7 @@ $sqlSelect2 = $pdo->query("SELECT * FROM `product` WHERE `idProduct` = ".$_GET['
             <?php
             while ($donnees2 = $sqlSelectLinkCategory->fetch()) {
                 echo '<div class="cell-inside"><label id="idLink"> Catégorie actuelle : '.$donnees2['name'].'</label>
-			<form class="cell-button" method="post" action="php/product.php?idSupprLink='.$donnees2['idLinkProductCategory'].'&id='.$_GET['id'].'"><button name="supprLink" id="btn_supression" value="'.$donnees2['idLinkProductCategory'].'">Supprimer</button></form></div>';
+			<form class="cell-button" method="post" onclick="return confirm(\'Êtes-vous sûr de vouloir supprimer ?\');" action="php/product.php?idSupprLink='.$donnees2['idLinkProductCategory'].'&id='.$_GET['id'].'"><button name="supprLink" id="btn_supression" value="'.$donnees2['idLinkProductCategory'].'">Supprimer</button></form></div>';
             }
             $sqlSelectLinkCategory->closeCursor();
             ?>

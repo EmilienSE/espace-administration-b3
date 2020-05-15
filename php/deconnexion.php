@@ -2,4 +2,5 @@
 session_start();
 $_SESSION = array();
 session_destroy();
-header('location: ../connexion.php');
+//header('location: ../index.php');
+echo "<script type='text/javascript'>document.location.replace('../index.php');</script>";

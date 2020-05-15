@@ -1,8 +1,14 @@
 <?php
-try {
-    // se connecter à mysql
-    $pdo = new PDO('mysql: host=localhost;dbname=b3-boutique;port=3306','root','');
-} catch (PDOException $exc) {
-    echo $exc->getMessage();
-    exit();
-}
+  $host_name = 'db5000455838.hosting-data.io';
+  $database = 'dbs436544';
+  $user_name = 'dbu770980';
+  $password = 'Testb3dev_';
+  $pdo = null;
+
+  try {
+    $pdo = new PDO("mysql:host=$host_name; dbname=$database;", $user_name, $password);
+  } catch (PDOException $e) {
+    echo "Erreur!: " . $e->getMessage() . "<br/>";
+    die();
+  }
+?>
