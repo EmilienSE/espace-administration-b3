@@ -11,7 +11,12 @@ if (isset($_POST['createCategory']) || isset($_POST['editCategory'])) {
         $enabled = $_POST['enable'];
     }
     $description = $_POST['description'];
-    $categoryParent = $_POST['categoryparent'];
+    if (empty($_POST['categoryparent'])) {
+        $categoryParent = null;
+    } else {
+        $categoryParent = $_POST['categoryparent'];
+    }
+
 }
 
 
@@ -22,7 +27,8 @@ if (isset($_POST['createCategory'])) {
     $exec = $res->execute(array(':nom' =>$name, ':slug' =>$slug, ':description' =>$description, ':idParentCategory' =>$categoryParent, ':enabled' =>$enabled));
     // vérifier si la requête d'insertion a réussi
     if ($exec) {
-        echo 'Données insérées';
+        echo 'Catégorie créer';
+        header('location: ../Categories.php?id='.$_GET['id']);
     } else {
         echo "Échec de l'opération d'insertion";
     }
@@ -34,7 +40,8 @@ if (isset($_POST['createCategory'])) {
     $exec = $res->execute(array(':nom' =>$name, ':slug' =>$slug, ':description' =>$description, ':idParentCategory' =>$categoryParent, ':enabled' =>$enabled));
     // vérifier si la requête d'insertion a réussi
     if ($exec) {
-        echo 'Données modifiées';
+        echo 'Catégorie modifiée';
+        header('location: ../Categories.php?id='.$_GET['id']);
     } else {
         echo "Échec de l'opération d'update";
     }
@@ -46,7 +53,8 @@ if (isset($_POST['createCategory'])) {
     $exec = $res->execute();
     // vérifier si la requête d'insertion a réussi
     if ($exec) {
-        echo 'Données supprimées';
+        echo 'Catégorie supprimer';
+        header('location: ../Categories.php?id='.$_GET['id']);
     } else {
         echo "Échec de l'opération delete";
     }

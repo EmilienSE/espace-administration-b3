@@ -36,7 +36,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/php" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\wamp64\www\espace-admin\php" />
+    </key>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -61,6 +72,10 @@
       <option name="presentableId" value="Default" />
       <updated>1589375711556</updated>
       <workItem from="1589375713189" duration="545000" />
+      <workItem from="1589466540438" duration="6527000" />
+      <workItem from="1589490379301" duration="1316000" />
+      <workItem from="1589492486433" duration="476000" />
+      <workItem from="1589526037729" duration="2556000" />
     </task>
     <servers />
   </component>
@@ -68,9 +83,9 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="627" y="226" width="758" height="628" key="find.popup" timestamp="1589375750817">
+    <state x="627" y="226" width="758" height="628" key="find.popup" timestamp="1589467543806">
       <screen x="93" y="0" width="1827" height="1080" />
     </state>
-    <state x="627" y="226" width="758" height="628" key="find.popup/93.0.1827.1080/-1920.0.1920.1040/1920.0.1920.1040@93.0.1827.1080" timestamp="1589375750817" />
+    <state x="627" y="226" width="758" height="628" key="find.popup/93.0.1827.1080/-1920.0.1920.1040/1920.0.1920.1040@93.0.1827.1080" timestamp="1589467543806" />
   </component>
 </project>

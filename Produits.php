@@ -3,12 +3,8 @@ include('php/connect.php');
 $sqlSelect = $pdo->query("SELECT * FROM `product`");
 ?>
 <?php require "header.php"; ?>
-        <nav>
-            <a href="Categories.php">Catégories</a> |
-            <a href="Produits.php">Produits</a>
-        </nav>
 
-        <a href="AjoutProduit.php" class="Ajout"><button class="Gestion">Ajouter un produit</button></a>
+        <a href="AjoutProduit.php?id=<?php echo $_GET['id']; ?>" class="Ajout"><button class="Gestion">Ajouter un produit</button></a>
 
         <div class="Content">
             <table>
@@ -44,9 +40,9 @@ $sqlSelect = $pdo->query("SELECT * FROM `product`");
 		            <td><span>'.$donnees['width'].'</span></td>
 		            <td><span>'.$donnees['quantity'].'</span></td>
 		            <td><span>'.$donnees['enabled'].'</span></td>
-		            <td><a href="ModifierProduit.php?idProduct='.$donnees['idProduct'].'"><button>Modifier</button></a></td>
-		            <td><form class="cell-button" method="post" action="php/product.php?idProduct='.$donnees['idProduct'].'"><button type="submit" name="supprProduct" id="btn_supression">Supprimer</button></form></td>
-		            
+		            <td><a href="ModifierProduit.php?idProduct='.$donnees['idProduct'].'&id='.$_GET['id'].'"><button>Modifier</button></a></td>
+		            <td><form class="cell-button" method="post" action="php/product.php?idProduct='.$donnees['idProduct'].'&id='.$_GET['id'].'"><button type="submit" name="supprProduct" id="btn_supression">Supprimer</button></form></td>
+		     
 				</tr>
 				';
                 }

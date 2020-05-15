@@ -41,6 +41,7 @@ if (isset($_POST['createProduct'])) {
     // vérifier si la requête d'insertion a réussi
     if ($exec) {
         echo 'Données insérées';
+        header('location: ../Produits.php?id='.$_GET['id']);
     } else {
         echo "Échec de l'opération d'insertion";
     }
@@ -60,9 +61,11 @@ if (isset($_POST['createProduct'])) {
         // vérifier si la requête d'insertion a réussi
         if ($exec2) {
             echo 'Produit lié à la catégorie';
+            header('location: ../Produits.php?id='.$_GET['id']);
         } else {
             echo "Échec de l'opération d'insertion";
         }
+
     }
 } else if (isset($_POST['editProduct'])) {
     $idProduct = $_GET['idProduct'];
@@ -72,11 +75,12 @@ if (isset($_POST['createProduct'])) {
     $exec = $res->execute(array(':nom' =>$name, ':slug' =>$slug, ':description' =>$description, ':price' =>$price , ':weight' =>$weight , ':height' =>$height, ':width' =>$width, ':quantity' =>$quantity, ':enabled' =>$enabled ));
     // vérifier si la requête d'insertion a réussi
     if ($exec) {
-        echo 'Données modifiées';
+        echo 'Produit modifiée';
+        header('location: ../Produits.php?id='.$_GET['id']);
     } else {
         echo "Échec de l'opération d'update";
     }
-    if (!empty($_POST['categoryparent']) && $_POST['categoryparent'] !== 'default') {
+    if (!empty($_POST['categoryparent'])) {
         // Requête msql pour link produit
         $sqlLinkProduct = "INSERT INTO `link_product_category`(`idCategory`, `idProduct`) VALUES (:idCategory, :idProduct)";
         $res = $pdo->prepare($sqlLinkProduct);
@@ -88,10 +92,12 @@ if (isset($_POST['createProduct'])) {
         );
         // vérifier si la requête d'insertion a réussi
         if ($exec2) {
-            echo 'Produit lié à la catégories';
+            echo '-Produit lié à la catégorie';
+            header('location: ../Produits.php?id='.$_GET['id']);
         } else {
             echo "Échec de l'opération d'insertion";
         }
+
     }
 } else if (isset($_POST['supprProduct'])) {
     $idProduct = $_GET['idProduct'];
@@ -101,18 +107,20 @@ if (isset($_POST['createProduct'])) {
     $exec = $res->execute();
     // vérifier si la requête d'insertion a réussi
     if ($exec) {
-        echo 'Données supprimées';
+        echo 'Produit supprimée';
+        header('location: ../Produits.php?id='.$_GET['id']);
     } else {
         echo "Échec de l'opération delete";
     }
 } else if (isset($_POST['supprLink'])) {
     // Requête msql pour link produit
-    $sqlSupprLink = 'DELETE FROM `link_product_category` WHERE `idLinkProductCategory` = '.$_POST['supprLink'].'';
+    $sqlSupprLink = 'DELETE FROM `link_product_category` WHERE `idLinkProductCategory` = '.$_GET['idSupprLink'].'';
     $res = $pdo->prepare($sqlSupprLink);
     $exec3 = $res->execute();
     // vérifier si la requête d'insertion a réussi
     if ($exec3) {
-        echo 'Supprimer';
+        echo 'Lien à la catégorie supprimer';
+        header('location: ../Produits.php?id='.$_GET['id']);
     } else {
         echo "Échec de l'opération d'insertion";
     }
